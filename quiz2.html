@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" name="viewport" content ="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="proj2.css">
+    </head>
+    <body>
+    <div id="wrap" style="padding-bottom: 20px;">
+        <div id="container">
+            <img id="image" src="header3.jpg">
+            <header>Koala Tea</header>
+        </div>
+        <ul class="wrap">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li class="dropdown">
+                <a href="menu.html" class="dropbtn">Menu</a>
+                <div class="dropdown-content">
+                    <a href="menu.html#pastries">Pastries</a>
+                    <a href="menu.html#tea">Tea</a>
+                    <a href="menu.html#coffee">Coffee</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="contact.html" class="dropbtn">Contact</a>
+                <div class="dropdown-content">
+                    <a href="contact.html#feedback">Feedback</a>
+                    <a href="contact.html#location">Directions</a>
+                </div>
+            </li>
+            <li><a href="diy.html">Make Your Own Pastry</a></li>
+        </ul>
+        <header2>What tea is your poison today?</header2>
+        
+        <script type="text/javascript" src="http://cs.smith.edu/~nhowe/105/examples/cookie.js"></script>
+        <script>
+            // This function will save the user's choice in a cookie
+            function saveChoice(choice) {
+	           setCookie("health",choice)
+            }
+        </script>
+        
+        <p>Are there any health problems you're worrying about?</p>
+
+        <p><a href="quiz3.html" onClick="saveChoice('dementia')">Dementia</a></p>
+        <p><a href="quiz3.html" onClick="saveChoice('stroke')">Having a stroke</a></p>
+        <p><a href="quiz3.html" onClick="saveChoice('cholesterol')">High cholesterol</a></p>
+        <p><a href="quiz3.html" onClick="saveChoice('cancer')">Cancer</a></p>
+        <p><a href="quiz3.html" onClick="saveChoice('diabetes')">Diabetes</a></p>
+        <p><a href="quiz3.html" onClick="saveChoice('nothing')">Nah.</a></p>
+    </div>
+    </body>
+    <div class="footer">
+        Find us at <strong>104 Main Street, Northampton, MA 01060</strong>,<br/>
+        <strong>Phone: </strong>413-392-2937<br/>
+        <strong>Email: </strong>koalateacafe@gmail.com
+    </div>
+</html>

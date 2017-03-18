@@ -1,0 +1,240 @@
+<html>
+    <head>
+        <meta charset="UTF-8" name="viewport" content ="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="proj2.css">
+    </head>
+    <body>
+    <div id="wrap" style="padding-bottom:850px;">
+        <div id="container">
+            <img id="image" src="header3.jpg">
+            <header>Koala Tea</header>
+        </div>
+        <ul class="wrap">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li class="dropdown">
+                <a href="menu.html" class="dropbtn">Menu</a>
+                <div class="dropdown-content">
+                    <a href="pastries.html">Pastries</a>
+                    <a href="teas.html">Tea</a>
+                    <a href="coffees.html">Coffee</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="contact.html" class="dropbtn">Contact</a>
+                <div class="dropdown-content">
+                    <a href="contact.html#feedback">Feedback</a>
+                    <a href="contact.html#location">Directions</a>
+                </div>
+            </li>
+            <li><a href="diy.html">Make Your Own Pastry</a></li>
+        </ul>
+        <header2>Make Your Own Pastry</header2>
+            <p>Make your own pastry, send it in to us using the submit button, and stand a chance to have your pastry displayed on our menu, as well as win a $50 Koala Tea gift card!</p>
+            
+            <p>Draw in the box below:</p>
+                <center><button class="button" style="vertical-align:middle" type="submit" onClick="submit()"><span>Submit</span></button></center><br/>
+        
+                <script>
+                function submit() {
+                alert("Thank you for your contribution!");
+                location.reload();
+                }
+                </script>
+            <canvas id="sheet" width="800" height="800"></canvas>
+                <!--<div style="position:absolute;">Choose Color</div><br/>
+        <div style="position:absolute;width:10px;height:10px;background:green;" id="green" onclick="color(this)"></div><br/>
+        <div style="position:absolute;width:10px;height:10px;background:blue;" id="blue" onclick="color(this)"></div><br/>
+        <div style="position:absolute;width:10px;height:10px;background:red;" id="red" onclick="color(this)"></div><br/>
+        <div style="position:absolute;width:10px;height:10px;background:yellow;" id="yellow" onclick="color(this)"></div><br/>
+        <div style="position:absolute;width:10px;height:10px;background:orange;" id="orange" onclick="color(this)"></div><br/>
+        <div style="position:absolute;width:10px;height:10px;background:black;" id="black" onclick="color(this)"></div><br/>
+        <div style="position:absolute;">Eraser</div><br/>
+        <div style="position:absolute;width:15px;height:15px;background:white;border:2px solid;" id="white" onclick="color(this)"></div><br/>-->
+            <script>
+                /*jslint browser:true */
+                "use strict";
+                
+                var color = "black",
+                    lineWidth = 2;
+                
+                /*// Change drawing colors according to user selection
+                function color(obj) {
+                    switch (obj.id) {
+                        case "green":
+                            color = "green";
+                            break;
+                        case "blue":
+                            color = "blue";
+                            break;
+                        case "red":
+                            color = "red";
+                            break;
+                        case "yellow":
+                            color = "yellow";
+                            break;
+                        case "orange":
+                            color = "orange";
+                            break;                
+                        case "black":
+                            color = "black";
+                            break;
+                        case "white":
+                            color = "white";
+                            break;
+                    }
+                    if (color == "white") lineWidth = 14;
+                    else lineWidth = 2;
+                }*/
+                
+                var context = document.getElementById('sheet').getContext("2d");
+                var canvas = document.getElementById('sheet');
+                context = canvas.getContext("2d");
+                context.strokeStyle = color;
+                context.lineJoin = "round";
+                context.lineWidth = lineWidth;
+
+                var clickX = [];
+                var clickY = [];
+                var clickDrag = [];
+                var paint;
+
+                /**
+                 * Add information where the user clicked at.
+                 * @param {number} x
+                 * @param {number} y
+                 * @return {boolean} dragging
+                 */
+                function addClick(x, y, dragging) {
+                    clickX.push(x);
+                    clickY.push(y);
+                    clickDrag.push(dragging);
+                }
+
+                /**
+                 * Redraw the complete canvas.
+                 */
+                function redraw() {
+                // Clears the canvas
+                    context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+
+                    for (var i = 0; i < clickX.length; i += 1) {
+                        if (!clickDrag[i] && i == 0) {
+                            context.beginPath();
+                            context.moveTo(clickX[i], clickY[i]);
+                            context.stroke();
+                        } else if (!clickDrag[i] && i > 0) {
+                            context.closePath();
+
+                            context.beginPath();
+                            context.moveTo(clickX[i], clickY[i]);
+                            context.stroke();
+                        } else {
+                            context.lineTo(clickX[i], clickY[i]);
+                            context.stroke();
+                        }
+                    }
+                }   
+
+                /**
+                * Draw the newly added point.
+                * @return {void}
+                */
+                function drawNew() {
+                    var i = clickX.length - 1
+                    if (!clickDrag[i]) {
+                        if (clickX.length == 0) {
+                            context.beginPath();
+                            context.moveTo(clickX[i], clickY[i]);
+                            context.stroke();
+                        } else {
+                            context.closePath();
+
+                            context.beginPath();
+                            context.moveTo(clickX[i], clickY[i]);
+                            context.stroke();
+                        }
+                    } else {
+                        context.lineTo(clickX[i], clickY[i]);
+                        context.stroke();
+                    }
+                }
+
+                function mouseDownEventHandler(e) {
+                    paint = true;
+                    var x = e.pageX - canvas.offsetLeft;
+                    var y = e.pageY - canvas.offsetTop;
+                    if (paint) {
+                        addClick(x, y, false);
+                        drawNew();
+                    }
+                }
+
+                function touchstartEventHandler(e) {
+                    paint = true;
+                    if (paint) {
+                        addClick(e.touches[0].pageX - canvas.offsetLeft, e.touches[0].pageY - canvas.offsetTop, false);
+                        drawNew();
+                    }
+                }
+
+                function mouseUpEventHandler(e) {
+                    context.closePath();
+                    paint = false;
+                }
+
+                function mouseMoveEventHandler(e) {
+                    var x = e.pageX - canvas.offsetLeft;
+                    var y = e.pageY - canvas.offsetTop;
+                    if (paint) {
+                        addClick(x, y, true);
+                        drawNew();
+                    }
+                }
+
+                function touchMoveEventHandler(e) {
+                    if (paint) {
+                        addClick(e.touches[0].pageX - canvas.offsetLeft, e.touches[0].pageY - canvas.offsetTop, true);
+                        drawNew();
+                    }
+                }
+
+                function setUpHandler(isMouseandNotTouch, detectEvent) {
+                    removeRaceHandlers();
+                    if (isMouseandNotTouch) {
+                        canvas.addEventListener('mouseup', mouseUpEventHandler);
+                        canvas.addEventListener('mousemove', mouseMoveEventHandler);
+                        canvas.addEventListener('mousedown', mouseDownEventHandler);
+                        mouseDownEventHandler(detectEvent);
+                    } else {
+                        canvas.addEventListener('touchstart', touchstartEventHandler);
+                        canvas.addEventListener('touchmove', touchMoveEventHandler);
+                        canvas.addEventListener('touchend', mouseUpEventHandler);
+                        touchstartEventHandler(detectEvent);
+                    }
+                }
+
+                function mouseWins(e) {
+                    setUpHandler(true, e);
+                }
+
+                function touchWins(e) {
+                    setUpHandler(false, e);
+                }
+
+                function removeRaceHandlers() {
+                    canvas.removeEventListener('mousedown', mouseWins);
+                    canvas.removeEventListener('touchstart', touchWins);
+                }
+
+                canvas.addEventListener('mousedown', mouseWins);
+                canvas.addEventListener('touchstart', touchWins);
+    </script>
+        </div>
+    </body>
+    <div class="footer">
+        Find us at <strong>104 Main Street, Northampton, MA 01060</strong>,<br/>
+        <strong>Phone: </strong>413-392-2937<br/>
+        <strong>Email: </strong>koalateacafe@gmail.com
+    </div>
+</html>

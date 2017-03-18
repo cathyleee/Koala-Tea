@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <meta charset="UTF-8" name="viewport" content ="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="proj2.css">
+    </head>
+    <body>
+    <div id="wrap">
+        <div id="container">
+            <img id="image" src="header3.jpg">
+            <header>Koala Tea</header>
+        </div>
+        <ul class="wrap">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li class="dropdown">
+                <a href="menu.html" class="dropbtn">Menu</a>
+                <div class="dropdown-content">
+                    <a href="pastries.html">Pastries</a>
+                    <a href="teas.html">Tea</a>
+                    <a href="coffees.html">Coffee</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="contact.html" class="dropbtn">Contact</a>
+                <div class="dropdown-content">
+                    <a href="contact.html#feedback">Feedback</a>
+                    <a href="contact.html#location">Directions</a>
+                </div>
+            </li>
+            <li><a href="diy.html">Make Your Own Pastry</a></li>
+        </ul>
+        <div class="title2" id="feedback">
+			<header2>Email</header2>
+		</div>
+        
+            <script>
+                function sendEmail() {
+                alert("Thank you for your contribution!");
+                document.emailform.reset();
+                }
+            </script>
+        
+			<p>Want to send us feedback? Did a barista make you an especially nice drink? Do we have room for improvement? Want to send in menu suggestions? Want to talk to us about something else? Email us at <strong>koalateacafe@gmail.com</strong>, or send us an email here:</p><br/>
+            <form method="post" action ="mailto:koalateacafe@gmail.com" name="emailform">
+                <label><p><strong>Name</strong></p></label> 
+                <input type="text" name="name"><br/>
+                <label><p><strong>Email</strong></p></label>
+                <input type="text" name="email"><br/>
+                    <label><p><strong>Message</strong></p></label>
+                <input type="text" name="msg" style="height:100px"><br/>
+                <br/>
+                <button class="button" style="vertical-align:middle" onclick=sendEmail()><span>Submit</span></button>
+            </form>
+            <br/>
+            <br/>
+		<div class="title2">
+			<header2>Phone</header2>
+		</div>
+			<p>Have pressing questions? Call:<br/>
+			<strong>413-392-2937</strong></p>
+		<div class="title2" id="location">
+			<header2>Our location</header2>
+		</div>
+			 <div id="map"></div>
+    			<script>
+      				function initMap() {
+        			var pin = {lat: 42.3189222, lng: -72.6323249};
+        			var map = new google.maps.Map(document.getElementById('map'), {
+          			zoom: 4,
+          			center: pin
+        			});
+        			var marker = new google.maps.Marker({
+          			position: pin,
+          			map: map
+        			});
+                    map.setZoom(15);
+      				}
+    			</script>
+    			<script async defer
+    			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ8g0fZPrVvTWXW4t_IB4hEAjiz11ve1Q&callback=initMap">
+    			</script>
+    </div>
+    </body>
+    <div class="footer">
+        Find us at <strong>104 Main Street, Northampton, MA 01060</strong>,<br/>
+        <strong>Phone: </strong>413-392-2937<br/>
+        <strong>Email: </strong>koalateacafe@gmail.com
+    </div>
+</html>

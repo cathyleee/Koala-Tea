@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" name="viewport" content ="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="proj2.css">
+    </head>
+    <body>
+    <div id="wrap" style="padding-bottom: 20px;">
+        <div id="container">
+            <img id="image" src="header3.jpg">
+            <header>Koala Tea</header>
+        </div>
+        <ul class="wrap">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li class="dropdown">
+                <a href="menu.html" class="dropbtn">Menu</a>
+                <div class="dropdown-content">
+                    <a href="menu.html#pastries">Pastries</a>
+                    <a href="menu.html#tea">Tea</a>
+                    <a href="menu.html#coffee">Coffee</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="contact.html" class="dropbtn">Contact</a>
+                <div class="dropdown-content">
+                    <a href="contact.html#feedback">Feedback</a>
+                    <a href="contact.html#location">Directions</a>
+                </div>
+            </li>
+            <li><a href="diy.html">Make Your Own Pastry</a></li>
+        </ul>
+        <header2>Results</header2>
+        
+        <script type="text/javascript" src="http://cs.smith.edu/~nhowe/105/examples/cookie.js"></script>
+        <script>
+            var feeling = getCookie("feeling")
+            document.writeln("<p>You said that you were feeling "+feeling+" today.</p>")
+            if (feeling=="tired") {
+                document.writeln("<p>Try some of our black or green teas for a burst of caffeine. We recommend a good hot, steaming cup of Earl Grey.</p>")
+            }
+            if (feeling=="restless") {
+                document.writeln("<p>Want to settle down? Try some of our herbal teas; they might help you get a better night's sleep.</p>")
+            }
+            if (feeling=="nothing") {
+                document.writeln("<p>If you're not feeling anything in particular today, you're sure to feel satisfied with our wide range of white teas.</p>")
+            }
+            if (feeling=="hot") {
+                document.writeln("<p>Why not cool off with one of our popular iced lemon teas?</p>")
+            }
+        </script>
+        
+        <script>
+            var health = getCookie("health")
+            document.writeln("<p>You said that you were worried about "+health+".</p>")
+            if (health=="dementia") {
+                document.writeln("<p>According to scientists, people who drink 2 or 3 cups of black tea a day are half as likely to exhibit early signs of dementia, as compared to those who do not. Try one of our Assam teas!</p>")
+            }
+            if (health=="stroke") {
+                document.writeln("<p>Black teas also help reduce the risk of stroke - aren't they amazing?</p>")
+            }
+            if (health=="cholesterol") {
+                document.writeln("<p>The antioxidants found in oolong tea has been found to lower cholesterol levels.</p>")
+            }
+            if (health=="cancer") {
+                document.writeln("<p>Green tea contains antioxidants known to help with breast, lung, and stomach cancers, amongst others.</p>")
+            }
+            if (health=="diabetes") {
+                document.writeln("<p>Scientists have found that drinking chamomile tea helps to keep diabetes under control.</p>")
+            }
+            if (health=="nothing") {
+                document.writeln("<p>Try our wide selection of delicious iced teas -treat yourself!</p>")
+            }
+        </script>
+        
+        <script>
+            var taste = getCookie("taste")
+            document.writeln("<p>You said that you wanted something "+taste+" today.</p>")
+            if (taste=="strong") {
+                document.writeln("<p>Black teas are great if you're hunkering after a strong flavour - the shot of caffeine that comes along with it is pretty great, too.</p>")
+            }
+            if (taste=="grassy") {
+                document.writeln("<p>Green teas have a distinct grassy taste. Want a bang to go along with your grass? Try our gunpowder tea.</p>")
+            }
+            if (taste=="light") {
+                document.writeln("<p>White teas are light, sweet, and perfect for everyone.</p>")
+            }
+            if (taste=="healthy") {
+                document.writeln("<p>If you're keen on the health benefits of our teas, every tea has health benefits! But you're probably looking for our selection of Oolong and Herbal teas.</p>")
+            }
+        </script>
+    </div>
+    </body>
+    <div class="footer">
+        Find us at <strong>104 Main Street, Northampton, MA 01060</strong>,<br/>
+        <strong>Phone: </strong>413-392-2937<br/>
+        <strong>Email: </strong>koalateacafe@gmail.com
+    </div>
+</html>

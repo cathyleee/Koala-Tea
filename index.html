@@ -1,0 +1,110 @@
+<html>
+    <head>
+        <meta charset="UTF-8" name="viewport" content ="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="proj2.css">
+    </head>
+    <body>
+    <div id="wrap">
+        <div id="container">
+            <img id="image" src="header3.jpg">
+            <header>Koala Tea</header>
+        </div>
+        <ul class="wrap">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+            <li class="dropdown">
+                <a href="menu.html" class="dropbtn">Menu</a>
+                <div class="dropdown-content">
+                    <a href="pastries.html">Pastries</a>
+                    <a href="teas.html">Tea</a>
+                    <a href="coffees.html">Coffee</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="contact.html" class="dropbtn">Contact</a>
+                <div class="dropdown-content">
+                    <a href="contact.html#feedback">Feedback</a>
+                    <a href="contact.html#location">Directions</a>
+                </div>
+            </li>
+            <li><a href="diy.html">Make Your Own Pastry</a></li>
+        </ul>
+        
+        <table class="invisibletable">
+        <tr>
+        <td><div class="slideshow-container">
+            <div class="mySlides fade">
+                <img id ="slideshowimg" src="slideshow7.jpg">
+            </div>
+            <div class="mySlides fade">
+                <img id="slideshowimg" src="slideshow13.jpg">
+            </div>
+            <div class="mySlides fade">
+                <img id="slideshowimg" src="slideshow14.jpg">
+            </div>
+            <div class="mySlides fade">
+                <img id="slideshowimg" src="slideshow10.jpg">
+            </div>
+            <div class="mySlides fade">
+                <img id="slideshowimg" src="slideshow11.jpg">
+            </div>
+            <div class="mySlides fade">
+                <img id="slideshowimg" src="slideshow12.jpg">
+            </div>
+            <br/>
+            <div>
+				<span class="dot"></span>
+				<span class="dot"></span>
+				<span class="dot"></span>
+				<span class="dot"></span>
+				<span class="dot"></span>
+                <span class="dot"></span>
+			</div>
+            <br/>
+            
+            <script>
+				var slideIndex = 0;
+				showSlides();
+				
+				function showSlides() {
+					var i;
+					var slides = document.getElementsByClassName("mySlides");
+					var slides = document.getElementsByClassName("mySlides");
+					var dots = document.getElementsByClassName("dot");
+					for (i = 0; i < slides.length; i++) {
+						slides[i].style.display = "none";
+					}
+					slideIndex++;
+					if (slideIndex > slides.length) {
+						slideIndex = 1;
+					}
+					for (i = 0; i < dots.length; i++) {
+						dots[i].className = dots[i].className.replace(" active", "");
+					}
+					slides[slideIndex-1].style.display = "block";
+					dots[slideIndex-1].className += " active";
+					setTimeout(showSlides, 2000);
+				}
+			</script>
+            <br/>
+        </div></td>
+        <td><header2 style="text-align:right">Welcome</header2>
+            <p>Koala Tea is a café that has served its customers in Boston, MA, since 2002. We offer pastries, cakes, and coffee, and take special pride in our unique tea blends. If you're hungry, thirsty, or just looking for somewhere to hang out, Koala Tea is the right place for you. (We don't sell any koalas - we're just particularly invested in serving quality teas.)</p>
+            
+            <p><i>Note: </i>We are currently hiring - if you're interested in becoming a cashier or barista for us, please contact us here, or drop into our café anytime to speak with one of our staff.</p>
+            
+            <header2 style="text-align:right">Hours</header2>
+                <p><b>Mondays to Fridays:</b> 9am - 9pm</p>
+                <p><b>Saturdays & Sundays:</b> 9am - 10pm</p>
+        </td>
+        </tr>
+        </table>
+        
+    </div>
+    </body>
+    <div class="footer">
+        Find us at <strong>104 Main Street, Northampton, MA 01060</strong>,<br/>
+        <strong>Phone: </strong>413-392-2937<br/>
+        <strong>Email: </strong>koalateacafe@gmail.com
+    </div>
+</html>
